@@ -95,7 +95,7 @@ module Squall
     #
     # Return a Hash.
     def activate(id)
-      response = request(:post, "/users/#{id}/activate_user.json")
+      response = request(:post, "/users/#{id}/activate.json")
       response["user"]
     end
     alias_method :unsuspend, :activate
@@ -126,9 +126,9 @@ module Squall
     #
     # id - ID of user
     #
-    # Return a Hash.
-    def monthly_bills(id)
-      request(:get, "/users/#{id}/monthly_bills.json")
+    # * +id*+ - ID of user
+    def monthly_bills(id, options = {})
+      response = request(:get, "/users/#{id}/monthly_bills.json", {:query => options})
     end
 
     # Public: List a User's billing statistics
