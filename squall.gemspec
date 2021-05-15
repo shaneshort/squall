@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "squall"
 
-  s.add_runtime_dependency 'faraday', '~> 1.3.0'
+  s.add_runtime_dependency 'faraday', '~> 1.4'
   s.add_runtime_dependency 'faraday_middleware', '~> 1.0.0'
   s.add_runtime_dependency 'json', '~> 2.1'
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.3') if RUBY_PLATFORM == 'java'
