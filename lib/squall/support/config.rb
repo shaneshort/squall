@@ -50,5 +50,14 @@ module Squall
     def debug(value)
       @config[:debug] = value
     end
+
+    # Public: Sets the local path to your Certificate Authority (CA) certificates
+    #
+    # value - The directory location
+    #
+    # Returns value.
+    def ca_path(value)
+      @config[:ca_path] = value
+    end
   end
 end

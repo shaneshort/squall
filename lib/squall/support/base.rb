@@ -49,6 +49,7 @@ module Squall
         if Squall.config[:debug]
          c.use Faraday::Response::Logger
         end
+        c.ssl = { ca_path: Squall.config[:ca_path] } if Squall.config[:ca_path]
       end
 
       response = conn.send(request_method, path)
