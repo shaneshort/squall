@@ -1,78 +1,87 @@
 ---
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/users/404/payments.json?payment%5Bamount%5D=500
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/users/404/payments.json?payment%5Bamount%5D=500
     body:
+      encoding: US-ASCII
+      string: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json
-      authorization:
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+  response:
+    status:
       code: 404
       message: Not Found
     headers:
-      date:
+      Date:
       - Mon, 13 Feb 2012 17:48:31 GMT
-      server:
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-powered-by:
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      x-ua-compatible:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-runtime:
+      X-Runtime:
       - '0.023899'
-      cache-control:
+      Cache-Control:
       - no-cache
-      set-cookie:
-      - <REDACTED>
-      status:
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
       - '404'
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-    body: ! '{"errors":["Resource not found"]}'
-    http_version: '1.1'
-- !ruby/struct:VCR::HTTPInteraction
-  request: !ruby/struct:VCR::Request
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments.json?payment%5Bamount%5D=500
     body:
+      encoding: UTF-8
+      string: '{"errors":["Resource not found"]}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/users/1/payments.json?payment%5Bamount%5D=500
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json
-      authorization:
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response
-    status: !ruby/struct:VCR::ResponseStatus
+  response:
+    status:
       code: 201
       message: Created
     headers:
-      date:
+      Date:
       - Mon, 13 Feb 2012 17:48:31 GMT
-      server:
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-powered-by:
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      x-ua-compatible:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-runtime:
+      X-Runtime:
       - '0.034229'
-      cache-control:
+      Cache-Control:
       - no-cache
-      set-cookie:
-      - <REDACTED>
-      location:
+      Set-Cookie:
+      - "<REDACTED>"
+      Location:
       - http://<URL>/users/1/payments/36
-      status:
+      Status:
       - '201'
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-    body: ! '{"payment":{"created_at":"2012-02-13T17:48:31Z","updated_at":"2012-02-13T17:48:31Z","amount":"500.0","id":36,"invoice_number":null,"user_id":1}}'
+    body:
+      encoding: UTF-8
+      string: '{"payment":{"created_at":"2012-02-13T17:48:31Z","updated_at":"2012-02-13T17:48:31Z","amount":"500.0","id":36,"invoice_number":null,"user_id":1}}'
     http_version: '1.1'
-...
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

@@ -8,7 +8,11 @@ describe Squall::Payment do
   end
 
   describe "#list" do
-    use_vcr_cassette "payment/list"
+    around do |example|
+      VCR.use_cassette 'payment/list' do
+        example.call
+      end
+    end
 
     it "returns a user list" do
       payments = @payment.list(1)
@@ -22,7 +26,11 @@ describe Squall::Payment do
   end
 
   describe "#create" do
-    use_vcr_cassette "payment/create"
+    around do |example|
+      VCR.use_cassette 'payment/create' do
+        example.call
+      end
+    end
 
     it "allows all optional params" do
       optional = [:invoice_number]
@@ -34,12 +42,16 @@ describe Squall::Payment do
 
     it "creates a payment for a user" do
       user = @payment.create(1, @valid)
-      @payment.success.should be_true
+      @payment.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "payment/edit"
+    around do |example|
+      VCR.use_cassette 'payment/edit' do
+        example.call
+      end
+    end
 
     it "allows select params" do
       optional = [:amount, :invoice_number]
@@ -51,16 +63,20 @@ describe Squall::Payment do
 
     it "edits a payment" do
       user = @payment.edit(1, 1, amount: 100)
-      @payment.success.should be_true
+      @payment.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette "payment/delete"
+    around do |example|
+      VCR.use_cassette 'payment/delete' do
+        example.call
+      end
+    end
 
     it "deletes a payment" do
       @payment.delete(1, 1)
-      @payment.success.should be_true
+      @payment.success.should be_truthy
     end
   end
 end

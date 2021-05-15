@@ -10,7 +10,11 @@ describe Squall::Transaction do
   end
 
   describe "#list" do
-    use_vcr_cassette 'transaction/list'
+        around do |example|
+      VCR.use_cassette 'transaction/list' do
+        example.call
+      end
+    end
 
     it "lists transactions" do
       list = @transaction.list
@@ -22,7 +26,11 @@ describe Squall::Transaction do
   end
 
   describe "#show" do
-    use_vcr_cassette "transaction/show"
+    around do |example|
+      VCR.use_cassette 'transaction/show' do
+        example.call
+      end
+    end
 
     it "returns a transaction" do
       transaction = @transaction.show(1)

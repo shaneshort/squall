@@ -1,40 +1,46 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/user_groups.json?user_group%5Blabel%5D=My+new+group
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/user_groups.json?user_group%5Blabel%5D=My%20new%20group
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - http://<URL>/user_groups/29
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.029662"
-      server: 
+      X-Runtime:
+      - '0.029662'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Mon, 13 Feb 2012 19:19:40 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:19:40Z\",\"updated_at\":\"2012-02-13T19:19:40Z\",\"id\":29}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"user_group":{"label":"My new group","created_at":"2012-02-13T19:19:40Z","updated_at":"2012-02-13T19:19:40Z","id":29}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

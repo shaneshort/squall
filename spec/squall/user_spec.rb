@@ -12,25 +12,37 @@ describe Squall::User do
   end
 
   describe "#create" do
-    use_vcr_cassette "user/create"
+    around do |example|
+      VCR.use_cassette 'user/create' do
+        example.call
+      end
+    end
 
     it "creates a user" do
       user = @user.create(@valid)
-      @user.success.should be_true
+      @user.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "user/edit"
+    around do |example|
+      VCR.use_cassette 'user/edit' do
+        example.call
+      end
+    end
 
     it "edits a user" do
       user = @user.edit(1, first_name: "Test")
-      @user.success.should be_true
+      @user.success.should be_truthy
     end
   end
 
   describe "#list" do
-    use_vcr_cassette "user/list"
+    around do |example|
+      VCR.use_cassette 'user/list' do
+        example.call
+      end
+    end
 
     it "returns a user list" do
       users = @user.list
@@ -44,7 +56,11 @@ describe Squall::User do
   end
 
   describe "#show" do
-    use_vcr_cassette "user/show"
+    around do |example|
+      VCR.use_cassette 'user/show' do
+        example.call
+      end
+    end
 
     it "returns a user" do
       user = @user.show(1)
@@ -53,7 +69,11 @@ describe Squall::User do
   end
 
   describe "#generate_api_key" do
-    use_vcr_cassette "user/generate_api_key"
+    around do |example|
+      VCR.use_cassette 'user/generate_api_key' do
+        example.call
+      end
+    end
 
     it "generates a new key" do
       user = @user.generate_api_key(1)
@@ -62,7 +82,11 @@ describe Squall::User do
   end
 
   describe "#suspend" do
-    use_vcr_cassette "user/suspend"
+    around do |example|
+      VCR.use_cassette 'user/suspend' do
+        example.call
+      end
+    end
 
     it "suspends a user" do
       user = @user.suspend(1)
@@ -71,7 +95,11 @@ describe Squall::User do
   end
 
   describe "#activate" do
-    use_vcr_cassette "user/activate"
+    around do |example|
+      VCR.use_cassette 'user/activate' do
+        example.call
+      end
+    end
 
     it "activates a user" do
       user = @user.activate(1)
@@ -84,16 +112,24 @@ describe Squall::User do
   end
 
   describe "#delete" do
-    use_vcr_cassette "user/delete"
+    around do |example|
+      VCR.use_cassette 'user/delete' do
+        example.call
+      end
+    end
 
     it "deletes a user" do
       @user.delete(1)
-      @user.success.should be_true
+      @user.success.should be_truthy
     end
   end
 
   describe "#stats" do
-    use_vcr_cassette "user/stats"
+    around do |example|
+      VCR.use_cassette 'user/stats' do
+        example.call
+      end
+    end
 
     it "returns stats" do
       stats = @user.stats(1)
@@ -102,7 +138,11 @@ describe Squall::User do
   end
 
   describe "#monthly_bills" do
-    use_vcr_cassette "user/monthly_bills"
+    around do |example|
+      VCR.use_cassette 'user/monthly_bills' do
+        example.call
+      end
+    end
 
     it "returns an array of bills for the user" do
       stats = @user.monthly_bills(1)
@@ -111,7 +151,11 @@ describe Squall::User do
   end
 
   describe "#virtual_machines" do
-    use_vcr_cassette "user/virtual_machines"
+    around do |example|
+      VCR.use_cassette 'user/virtual_machines' do
+        example.call
+      end
+    end
 
     it "returns the virtual_machines" do
       virtual_machines = @user.virtual_machines(1)
@@ -120,7 +164,11 @@ describe Squall::User do
   end
 
   describe "#hypervisors" do
-    use_vcr_cassette "user/hypervisors"
+    around do |example|
+      VCR.use_cassette 'user/hypervisors' do
+        example.call
+      end
+    end
 
     it "returns the virtual_machines" do
       hypervisors = @user.hypervisors(1)
@@ -129,7 +177,11 @@ describe Squall::User do
   end
 
   describe "#data_store_zones" do
-    use_vcr_cassette "user/data_store_zones"
+    around do |example|
+      VCR.use_cassette 'user/data_store_zones' do
+        example.call
+      end
+    end
 
     it "returns the virtual_machines" do
       data_store_zones = @user.data_store_zones(1)
@@ -138,7 +190,11 @@ describe Squall::User do
   end
 
   describe "#network_zones" do
-    use_vcr_cassette "user/network_zones"
+    around do |example|
+      VCR.use_cassette 'user/network_zones' do
+        example.call
+      end
+    end
 
     it "returns the network_zones" do
       network_zones = @user.network_zones(1)
@@ -147,7 +203,11 @@ describe Squall::User do
   end
 
   describe "#limits" do
-    use_vcr_cassette "user/limits"
+    around do |example|
+      VCR.use_cassette 'user/limits' do
+        example.call
+      end
+    end
 
     it "returns the limits" do
       limits = @user.limits(1)

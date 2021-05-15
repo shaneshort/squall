@@ -1,77 +1,87 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/transactions/5.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<URL>/transactions/5.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 03 May 2011 18:09:32 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.039852"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.039852'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "404"
-      transfer-encoding: 
+      Status:
+      - '404'
+      Transfer-Encoding:
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/transactions/1.json
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"error":"Resource not found"}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: get
+    uri: http://<URL>/transactions/1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      etag: 
-      - "\"a6ff1a2063d2158cdfe8d5dab5dc5cc8\""
-      x-powered-by: 
+      Etag:
+      - '"a6ff1a2063d2158cdfe8d5dab5dc5cc8"'
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.040787"
-      server: 
+      X-Runtime:
+      - '0.040787'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 03 May 2011 18:09:33 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "200"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '200'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"transaction\":{\"pid\":2180,\"created_at\":\"2011-04-28T15:31:22Z\",\"actor\":null,\"updated_at\":\"2011-04-28T15:31:27Z\",\"action\":\"reset_root_password\",\"parent_type\":\"VirtualMachine\",\"priority\":10,\"id\":1,\"allowed_cancel\":true,\"dependent_transaction_id\":null,\"user_id\":2,\"parent_id\":1,\"log_output\":\"\",\"params\":{\"new_password\":null},\"identifier\":\"7z2gzavnrhmmt3\",\"status\":\"complete\"}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"transaction":{"pid":2180,"created_at":"2011-04-28T15:31:22Z","actor":null,"updated_at":"2011-04-28T15:31:27Z","action":"reset_root_password","parent_type":"VirtualMachine","priority":10,"id":1,"allowed_cancel":true,"dependent_transaction_id":null,"user_id":2,"parent_id":1,"log_output":"","params":{"new_password":null},"identifier":"7z2gzavnrhmmt3","status":"complete"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

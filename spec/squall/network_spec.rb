@@ -7,7 +7,11 @@ describe Squall::Network do
   end
 
   describe "#list" do
-    use_vcr_cassette "network/list"
+    around do |example|
+      VCR.use_cassette 'network/list' do
+        example.call
+      end
+    end
 
     it "returns a network list" do
       networks = @network.list
@@ -22,41 +26,49 @@ describe Squall::Network do
   end
 
   describe "#edit" do
-    use_vcr_cassette 'network/edit'
+        around do |example|
+      VCR.use_cassette 'network/edit' do
+        example.call
+      end
+    end
 
     it "accepts valid params" do
       @network.edit(1, label: 'one')
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       @network.edit(1, network_group_id: 1)
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       @network.edit(1, identifier: 'lolzsdfds')
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       @network.edit(1, vlan: 1)
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       @network.edit(1, label: 'two', vlan: 2, identifier: 'woah')
-      @network.success.should be_true
+      @network.success.should be_truthy
     end
   end
 
   describe "#create" do
-    use_vcr_cassette "network/create"
-
-    it "raises error on duplicate account" do
-      pending "Broken in OnApp" do
-        expect {
-          @network.create(label: 'networktaken')
-        }.to raise_error(Squall::ServerError)
-        @network.errors['label'].should include("has already been taken")
+    around do |example|
+      VCR.use_cassette 'network/create' do
+        example.call
       end
     end
 
+    # it "raises error on duplicate account" do
+    #   pending "Broken in OnApp" do
+    #     expect {
+    #       @network.create(label: 'networktaken')
+    #     }.to raise_error(Squall::ServerError)
+    #     @network.errors['label'].should include("has already been taken")
+    #   end
+    # end
+
     it "creates a network" do
       network = @network.create(label: 'newnetwork', vlan: 1, identifier: 'newnetworkid')
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       network['label'].should == 'newnetwork'
       network['vlan'].should == 1
@@ -65,35 +77,43 @@ describe Squall::Network do
       network = @network.create(label: 'newnetwork')
       network['label'].should == 'newnetwork'
       network['vlan'].should be_nil
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       network = @network.create(label: 'newnetwork', vlan: 2)
       network['label'].should == 'newnetwork'
       network['vlan'].should == 2
-      @network.success.should be_true
+      @network.success.should be_truthy
 
       network = @network.create(label: 'newnetwork', identifier: 'something')
       network['label'].should == 'newnetwork'
       network['identifier'].should == 'something'
-      @network.success.should be_true
+      @network.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette 'network/delete'
+        around do |example|
+      VCR.use_cassette 'network/delete' do
+        example.call
+      end
+    end
 
     it "deletes the network" do
       delete = @network.delete(16)
-      @network.success.should be_true
+      @network.success.should be_truthy
     end
   end
 
   describe "#rebuild" do
-    use_vcr_cassette 'network/rebuild'
+        around do |example|
+      VCR.use_cassette 'network/rebuild' do
+        example.call
+      end
+    end
 
     it "rebuilds the network for VM" do
       rebuild = @network.rebuild(58)
-      @network.success.should be_true
+      @network.success.should be_truthy
     end
   end
 end

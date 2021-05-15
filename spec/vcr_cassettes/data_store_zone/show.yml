@@ -1,77 +1,87 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/404.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<URL>/data_store_zones/404.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 14 Feb 2012 15:01:48 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.034144"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.034144'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "404"
-      transfer-encoding: 
+      Status:
+      - '404'
+      Transfer-Encoding:
       - chunked
-    body: "{\"errors\":[\"Resource not found\"]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/1.json
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Resource not found"]}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: get
+    uri: http://<URL>/data_store_zones/1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      etag: 
-      - "\"2467c1ee932cdd32243eca1883e6f75d\""
-      x-powered-by: 
+      Etag:
+      - '"2467c1ee932cdd32243eca1883e6f75d"'
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.286577"
-      server: 
+      X-Runtime:
+      - '0.286577'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 14 Feb 2012 15:01:49 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "200"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '200'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"data_store_group\":{\"label\":\"My zone\",\"created_at\":\"2012-02-14T14:59:58Z\",\"updated_at\":\"2012-02-14T14:59:58Z\",\"id\":30}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"data_store_group":{"label":"My zone","created_at":"2012-02-14T14:59:58Z","updated_at":"2012-02-14T14:59:58Z","id":30}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

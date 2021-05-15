@@ -8,7 +8,11 @@ describe Squall::IpAddress do
   end
 
   describe "#list" do
-    use_vcr_cassette 'ipaddress/list'
+        around do |example|
+      VCR.use_cassette 'ipaddress/list' do
+        example.call
+      end
+    end
 
     it "returns ip_addresses" do
       ips = @ip.list(1)
@@ -17,12 +21,16 @@ describe Squall::IpAddress do
 
     it "contains ip address data" do
       ips = @ip.list(1)
-      ips.all?.should be_true
+      ips.all?.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette 'ipaddress/edit'
+        around do |example|
+      VCR.use_cassette 'ipaddress/edit' do
+        example.call
+      end
+    end
 
     ip_params = {
       address:         '109.123.91.67',
@@ -34,12 +42,16 @@ describe Squall::IpAddress do
 
     it "edits the IpAddress" do
       ip = @ip.edit(1, 1, ip_params)
-      @ip.success.should be_true
+      @ip.success.should be_truthy
     end
   end
 
   describe "#create" do
-    use_vcr_cassette 'ipaddress/create'
+        around do |example|
+      VCR.use_cassette 'ipaddress/create' do
+        example.call
+      end
+    end
 
     it "creates a new IP" do
       new_ip = @ip.create(1,
@@ -50,16 +62,20 @@ describe Squall::IpAddress do
         gateway:         '109.123.91.67'
       )
 
-      @ip.success.should be_true
+      @ip.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette 'ipaddress/delete'
+        around do |example|
+      VCR.use_cassette 'ipaddress/delete' do
+        example.call
+      end
+    end
 
     it "deletes the IP" do
       @ip.delete(1, 1)
-      @ip.success.should be_true
+      @ip.success.should be_truthy
     end
   end
 end

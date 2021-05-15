@@ -6,7 +6,11 @@ describe Squall::Role do
   end
 
   describe "#list" do
-    use_vcr_cassette "role/list"
+    around do |example|
+      VCR.use_cassette 'role/list' do
+        example.call
+      end
+    end
 
     it "returns roles" do
       roles = @role.list
@@ -15,7 +19,11 @@ describe Squall::Role do
   end
 
   describe "#show" do
-    use_vcr_cassette "role/show"
+    around do |example|
+      VCR.use_cassette 'role/show' do
+        example.call
+      end
+    end
 
     it "returns a role" do
       role = @role.show(1)
@@ -24,7 +32,11 @@ describe Squall::Role do
   end
 
   describe "#edit" do
-    use_vcr_cassette "role/edit"
+    around do |example|
+      VCR.use_cassette 'role/edit' do
+        example.call
+      end
+    end
 
     it "allows all optional params" do
       optional = [:label, :permission_ids]
@@ -35,25 +47,33 @@ describe Squall::Role do
       end
     end
 
-    it "updates the role" do
-      pending "OnApp is returning an empty response" do
-        role = @role.edit(1, label: 'New')
-        role['label'].should == 'New'
-      end
-    end
+    # it "updates the role" do
+    #   pending "OnApp is returning an empty response" do
+    #     role = @role.edit(1, label: 'New')
+    #     role['label'].should == 'New'
+    #   end
+    # end
   end
 
   describe "#delete" do
-    use_vcr_cassette "role/delete"
+    around do |example|
+      VCR.use_cassette 'role/delete' do
+        example.call
+      end
+    end
 
     it "returns a role" do
       role = @role.delete(3)
-      @role.success.should be_true
+      @role.success.should be_truthy
     end
   end
 
   describe "#permissions" do
-    use_vcr_cassette "role/permissions"
+    around do |example|
+      VCR.use_cassette 'role/permissions' do
+        example.call
+      end
+    end
 
     it "returns permissions" do
       permissions = @role.permissions
@@ -62,13 +82,17 @@ describe Squall::Role do
 
     it "contains role data" do
       permissions = @role.permissions
-      permissions.all?.should be_true
+      permissions.all?.should be_truthy
     end
 
   end
 
   describe "#create" do
-    use_vcr_cassette "role/create"
+    around do |example|
+      VCR.use_cassette 'role/create' do
+        example.call
+      end
+    end
 
     it "allows permission_ids" do
       @role.should_receive(:request).once.and_return Hash.new('role' => [])

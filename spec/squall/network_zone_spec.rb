@@ -7,7 +7,11 @@ describe Squall::NetworkZone do
   end
 
   describe "#list" do
-    use_vcr_cassette "network_zones/list"
+    around do |example|
+      VCR.use_cassette 'network_zones/list' do
+        example.call
+      end
+    end
 
     it "returns all network zones" do
       network_zoness = @network_zone.list
@@ -16,12 +20,16 @@ describe Squall::NetworkZone do
 
     it "contains the network zone data" do
       network_zoness = @network_zone.list
-      network_zoness.all? {|w| w.is_a?(Hash) }.should be_true
+      network_zoness.all? {|w| w.is_a?(Hash) }.should be_truthy
     end
   end
 
   describe "#show" do
-    use_vcr_cassette "network_zones/show"
+    around do |example|
+      VCR.use_cassette 'network_zones/show' do
+        example.call
+      end
+    end
 
     it "returns a network zone" do
       network_zones = @network_zone.show(1)
@@ -30,16 +38,24 @@ describe Squall::NetworkZone do
   end
 
   describe "#create" do
-    use_vcr_cassette "network_zones/create"
+    around do |example|
+      VCR.use_cassette 'network_zones/create' do
+        example.call
+      end
+    end
 
     it "creates a network zone" do
       @network_zone.create(@valid)
-      @network_zone.success.should be_true
+      @network_zone.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "network_zones/edit"
+    around do |example|
+      VCR.use_cassette 'network_zones/edit' do
+        example.call
+      end
+    end
 
     it "allows select params" do
       optional = [:label]
@@ -51,34 +67,46 @@ describe Squall::NetworkZone do
 
     it "edits a network zone" do
       @network_zone.edit(1, label: "Updated zone")
-      @network_zone.success.should be_true
+      @network_zone.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette "network_zones/delete"
+    around do |example|
+      VCR.use_cassette 'network_zones/delete' do
+        example.call
+      end
+    end
 
     it "deletes a network zone" do
       @network_zone.delete(1)
-      @network_zone.success.should be_true
+      @network_zone.success.should be_truthy
     end
   end
 
   describe "#attach" do
-    use_vcr_cassette "network_zones/attach"
+    around do |example|
+      VCR.use_cassette 'network_zones/attach' do
+        example.call
+      end
+    end
 
     it "attaches a network to the network zone" do
       request = @network_zone.attach(1, 2)
-      @network_zone.success.should be_true
+      @network_zone.success.should be_truthy
     end
   end
 
   describe "#detach" do
-    use_vcr_cassette "network_zones/detach"
+    around do |example|
+      VCR.use_cassette 'network_zones/detach' do
+        example.call
+      end
+    end
 
     it "detaches a network to the network zone" do
       request = @network_zone.detach(1, 2)
-      @network_zone.success.should be_true
+      @network_zone.success.should be_truthy
     end
   end
 

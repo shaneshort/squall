@@ -1,79 +1,89 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/users/2532564353245/network_zones.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<URL>/users/2532564353245/network_zones.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"412900ccaad65684f1c4a5201ab4a690\""
-      content-type: 
+      Etag:
+      - '"412900ccaad65684f1c4a5201ab4a690"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Fri, 10 Feb 2012 20:48:35 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.043664"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.043664'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "[{\"network_group\":{\"label\":\"Default Network Zone\",\"created_at\":\"2011-07-20T15:49:07Z\",\"updated_at\":\"2011-07-20T15:49:07Z\",\"id\":2}},{\"network_group\":{\"label\":\"Private\",\"created_at\":\"2011-10-17T19:53:54Z\",\"updated_at\":\"2011-10-17T19:53:54Z\",\"id\":10}}]"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/network_zones.json
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '[{"network_group":{"label":"Default Network Zone","created_at":"2011-07-20T15:49:07Z","updated_at":"2011-07-20T15:49:07Z","id":2}},{"network_group":{"label":"Private","created_at":"2011-10-17T19:53:54Z","updated_at":"2011-10-17T19:53:54Z","id":10}}]'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: get
+    uri: http://<URL>/users/1/network_zones.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      etag: 
-      - "\"412900ccaad65684f1c4a5201ab4a690\""
-      x-powered-by: 
+      Etag:
+      - '"412900ccaad65684f1c4a5201ab4a690"'
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.036230"
-      server: 
+      X-Runtime:
+      - '0.036230'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Fri, 10 Feb 2012 20:48:35 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "200"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '200'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "[{\"network_group\":{\"label\":\"Default Network Zone\",\"created_at\":\"2011-07-20T15:49:07Z\",\"updated_at\":\"2011-07-20T15:49:07Z\",\"id\":2}},{\"network_group\":{\"label\":\"Private\",\"created_at\":\"2011-10-17T19:53:54Z\",\"updated_at\":\"2011-10-17T19:53:54Z\",\"id\":10}}]"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '[{"network_group":{"label":"Default Network Zone","created_at":"2011-07-20T15:49:07Z","updated_at":"2011-07-20T15:49:07Z","id":2}},{"network_group":{"label":"Private","created_at":"2011-10-17T19:53:54Z","updated_at":"2011-10-17T19:53:54Z","id":10}}]'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

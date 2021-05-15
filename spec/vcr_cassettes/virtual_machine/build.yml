@@ -1,77 +1,88 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/build.json?virtual_machine%5Btemplate_id%5D=1
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/virtual_machines/404/build.json?virtual_machine%5Btemplate_id%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Wed, 20 Apr 2011 15:54:19 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "2.751480"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '2.751480'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "404"
-      transfer-encoding: 
+      Status:
+      - '404'
+      Transfer-Encoding:
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/72/build.json?virtual_machine%5Btemplate_id%5D=1
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"error":"Resource not found"}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/virtual_machines/72/build.json?virtual_machine%5Btemplate_id%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - https://www.example.com/virtual_machines/72
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.163372"
-      server: 
+      X-Runtime:
+      - '0.163372'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Wed, 20 Apr 2011 16:02:18 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"virtual_machine\":{\"label\":\"Testingagain\",\"cpus\":1,\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-04-20T16:01:10Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1,\"updated_at\":\"2011-04-20T16:02:18Z\",\"memory\":256,\"local_remote_access_port\":5901,\"allowed_swap\":true,\"recovery_mode\":false,\"allow_resize_without_reboot\":true,\"xen_id\":null,\"id\":72,\"hypervisor_id\":6,\"user_id\":4,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"testingagain.com\",\"booted\":false,\"remote_access_password\":\"sadf234\",\"min_disk_size\":5,\"initial_root_password\":\"213fsdfsd\",\"identifier\":\"asdfdsfsdf\",\"locked\":true,\"built\":false}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"virtual_machine":{"label":"Testingagain","cpus":1,"operating_system_distro":"rhel","created_at":"2011-04-20T16:01:10Z","template_id":1,"operating_system":"linux","cpu_shares":1,"updated_at":"2011-04-20T16:02:18Z","memory":256,"local_remote_access_port":5901,"allowed_swap":true,"recovery_mode":false,"allow_resize_without_reboot":true,"xen_id":null,"id":72,"hypervisor_id":6,"user_id":4,"template_label":"CentOS
+        5.5 x64","hostname":"testingagain.com","booted":false,"remote_access_password":"sadf234","min_disk_size":5,"initial_root_password":"213fsdfsd","identifier":"asdfdsfsdf","locked":true,"built":false}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

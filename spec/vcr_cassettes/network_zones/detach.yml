@@ -1,114 +1,128 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/network_zones/404/networks/1/detach.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/network_zones/404/networks/1/detach.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.019881"
-      server: 
+      X-Runtime:
+      - '0.019881'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 14 Feb 2012 15:42:27 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "404"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '404'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"errors\":[\"Resource not found\"]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/network_zones/1/networks/404/detach.json
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Resource not found"]}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/network_zones/1/networks/404/detach.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 14 Feb 2012 15:42:27 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.033149"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.033149'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "404"
-      transfer-encoding: 
+      Status:
+      - '404'
+      Transfer-Encoding:
       - chunked
-    body: "{\"errors\":[\"Resource not found\"]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/network_zones/1/networks/2/detach.json
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Resource not found"]}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/network_zones/1/networks/2/detach.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - http://<URL>/network_zones/2
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.029106"
-      server: 
+      X-Runtime:
+      - '0.029106'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 14 Feb 2012 15:42:28 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"network_group\":{\"label\":\"Updated zone\",\"created_at\":\"2011-07-20T15:49:07Z\",\"updated_at\":\"2012-02-14T15:24:31Z\",\"id\":2}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"network_group":{"label":"Updated zone","created_at":"2011-07-20T15:49:07Z","updated_at":"2012-02-14T15:24:31Z","id":2}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

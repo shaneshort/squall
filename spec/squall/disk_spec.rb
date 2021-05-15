@@ -9,7 +9,11 @@ describe Squall::Disk do
   end
 
   describe "#list" do
-    use_vcr_cassette "disk/list"
+    around do |example|
+      VCR.use_cassette 'disk/list' do
+        example.call
+      end
+    end
 
     it "returns all disk" do
       disks = @disk.list
@@ -18,17 +22,21 @@ describe Squall::Disk do
 
     it "contains the disk data" do
       disks = @disk.list
-      disks.all? { |w| w.is_a?(Hash) }.should be_true
+      disks.all? { |w| w.is_a?(Hash) }.should be_truthy
     end
 
     it "contains correct disk data" do
       disks = @disk.list
-      disks.all? { |w| !w['disk_vm_number'].nil? }.should be_true
+      disks.all? { |w| !w['disk_vm_number'].nil? }.should be_truthy
     end
   end
 
   describe "#vm_disk_list" do
-    use_vcr_cassette "disk/vm_disk_list"
+    around do |example|
+      VCR.use_cassette 'disk/vm_disk_list' do
+        example.call
+      end
+    end
 
     it "returns all VM disk" do
       disks = @disk.vm_disk_list(58)
@@ -37,61 +45,81 @@ describe Squall::Disk do
 
     it "contains the disk data" do
       disks = @disk.vm_disk_list(58)
-      disks.all? { |w| w.is_a?(Hash) }.should be_true
+      disks.all? { |w| w.is_a?(Hash) }.should be_truthy
     end
 
     it "contains correct disk data" do
       disks = @disk.vm_disk_list(58)
-      disks.all? { |w| !w['disk_vm_number'].nil? }.should be_true
+      disks.all? { |w| !w['disk_vm_number'].nil? }.should be_truthy
     end
   end
 
   describe "#create" do
-    use_vcr_cassette "disk/create"
+    around do |example|
+      VCR.use_cassette 'disk/create' do
+        example.call
+      end
+    end
 
     it "creates a disk" do
       @disk.create(58, @valid)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "disk/edit"
+    around do |example|
+      VCR.use_cassette 'disk/edit' do
+        example.call
+      end
+    end
 
     it "accepts valid params" do
       @disk.edit(78, disk_size: 3)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
   end
 
 
   describe "#migrate" do
-    use_vcr_cassette "disk/migrate"
+    around do |example|
+      VCR.use_cassette 'disk/migrate' do
+        example.call
+      end
+    end
 
     it "should return association error" do
       migrate = @disk.migrate(58, 78, data_store_id: 2)
-      @disk.success.should be_false
+      @disk.success.should be_falsey
       migrate['errors'].should include("Data store cannot be associated with this virtual machine.")
     end
   end
 
   describe "#iops_usage" do
-    use_vcr_cassette "disk/iops_usage"
+    around do |example|
+      VCR.use_cassette 'disk/iops_usage' do
+        example.call
+      end
+    end
 
     it "returns a disk IOPS usage" do
       usage = @disk.iops_usage(77)
       usage.should be_a(Array)
-      usage.all? { |w| w.is_a?(Hash) }.should be_true
-      usage.all? { |w| !w['stat_time'].nil? }.should be_true
+      usage.all? { |w| w.is_a?(Hash) }.should be_truthy
+      usage.all? { |w| !w['stat_time'].nil? }.should be_truthy
     end
   end
 
   describe "#build" do
-    use_vcr_cassette "disk/build"
+    around do |example|
+      VCR.use_cassette 'disk/build' do
+        example.call
+      end
+    end
 
     it "builds a disk" do
       @disk.build(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
 
     it "returns disk info" do
@@ -102,11 +130,15 @@ describe Squall::Disk do
   end
 
   describe "#unlock" do
-    use_vcr_cassette "disk/unlock"
+    around do |example|
+      VCR.use_cassette 'disk/unlock' do
+        example.call
+      end
+    end
 
     it "unlocks a disk" do
       @disk.unlock(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
 
     it "returns disk info" do
@@ -117,11 +149,15 @@ describe Squall::Disk do
   end
 
   describe "#auto_backup_on" do
-    use_vcr_cassette "disk/auto_backup_on"
+    around do |example|
+      VCR.use_cassette 'disk/auto_backup_on' do
+        example.call
+      end
+    end
 
     it "enable auto_backup for disk" do
       @disk.auto_backup_on(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
 
     it "returns disk info" do
@@ -132,11 +168,15 @@ describe Squall::Disk do
   end
 
   describe "#auto_backup_off" do
-    use_vcr_cassette "disk/auto_backup_off"
+    around do |example|
+      VCR.use_cassette 'disk/auto_backup_off' do
+        example.call
+      end
+    end
 
     it "disable auto_backup for disk" do
       @disk.auto_backup_off(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
 
     it "returns disk info" do
@@ -147,42 +187,58 @@ describe Squall::Disk do
   end
 
   describe "#schedules" do
-    use_vcr_cassette "disk/schedules"
+    around do |example|
+      VCR.use_cassette 'disk/schedules' do
+        example.call
+      end
+    end
 
     it "returns schedules for a disk" do
       schedules = @disk.schedules(78)
       schedules.should be_a(Array)
-      schedules.all? { |w| !w['target_id'].nil? }.should be_true
+      schedules.all? { |w| !w['target_id'].nil? }.should be_truthy
     end
   end
 
   describe "#add_schedule" do
-    use_vcr_cassette "disk/add_schedule"
+    around do |example|
+      VCR.use_cassette 'disk/add_schedule' do
+        example.call
+      end
+    end
 
     it "adds schedule for a disk" do
       disk = @disk.add_schedule(78, action: 'autobackup', duration: 1, period: 'days')
-      @disk.success.should be_true
+      @disk.success.should be_truthy
       disk.should be_a(Array)
     end
   end
 
   describe "#backups" do
-    use_vcr_cassette "disk/backups"
+    around do |example|
+      VCR.use_cassette 'disk/backups' do
+        example.call
+      end
+    end
 
     it "lists backups for a disk" do
       backups = @disk.backups(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
       backups.should be_a(Array)
-      backups.all? { |w| !w['disk_id'].nil? }.should be_true
+      backups.all? { |w| !w['disk_id'].nil? }.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette "disk/delete"
+    around do |example|
+      VCR.use_cassette 'disk/delete' do
+        example.call
+      end
+    end
 
     it "deletes a disk" do
       @disk.delete(78)
-      @disk.success.should be_true
+      @disk.success.should be_truthy
     end
   end
 

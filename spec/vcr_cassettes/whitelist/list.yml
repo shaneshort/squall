@@ -1,40 +1,46 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<URL>/users/1/user_white_lists.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      etag: 
-      - "\"bf92431d4e4cce8b1934f23c83f7429d\""
-      x-powered-by: 
+      Etag:
+      - '"bf92431d4e4cce8b1934f23c83f7429d"'
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.022344"
-      server: 
+      X-Runtime:
+      - '0.022344'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Mon, 13 Feb 2012 20:49:37 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "200"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '200'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "[{\"user_white_list\":{\"created_at\":\"2012-02-13T20:46:07Z\",\"updated_at\":\"2012-02-13T20:46:07Z\",\"id\":2,\"user_id\":1,\"ip\":\"192.168.1.1\",\"description\":null}}]"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '[{"user_white_list":{"created_at":"2012-02-13T20:46:07Z","updated_at":"2012-02-13T20:46:07Z","id":2,"user_id":1,"ip":"192.168.1.1","description":null}}]'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

@@ -7,7 +7,11 @@ describe Squall::Whitelist do
   end
 
   describe "#list" do
-    use_vcr_cassette "whitelist/list"
+    around do |example|
+      VCR.use_cassette 'whitelist/list' do
+        example.call
+      end
+    end
 
     it "returns a user's whitelists" do
       whitelists = @whitelist.list(1)
@@ -16,12 +20,16 @@ describe Squall::Whitelist do
 
     it "contains the whitelists data" do
       whitelists = @whitelist.list(1)
-      whitelists.all? {|w| w.is_a?(Hash) }.should be_true
+      whitelists.all? {|w| w.is_a?(Hash) }.should be_truthy
     end
   end
 
   describe "#show" do
-    use_vcr_cassette "whitelist/show"
+    around do |example|
+      VCR.use_cassette 'whitelist/show' do
+        example.call
+      end
+    end
 
     it "returns a whitelist" do
       whitelist = @whitelist.show(1, 2)
@@ -30,29 +38,41 @@ describe Squall::Whitelist do
   end
 
   describe "#create" do
-    use_vcr_cassette "whitelist/create"
+    around do |example|
+      VCR.use_cassette 'whitelist/create' do
+        example.call
+      end
+    end
 
     it "creates a whitelist for a user" do
       @whitelist.create(1, @valid)
-      @whitelist.success.should be_true
+      @whitelist.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "whitelist/edit"
+    around do |example|
+      VCR.use_cassette 'whitelist/edit' do
+        example.call
+      end
+    end
 
     it "edits a whitelist" do
       @whitelist.edit(1, 1, description: "This is actually a different computer.")
-      @whitelist.success.should be_true
+      @whitelist.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette "whitelist/delete"
+    around do |example|
+      VCR.use_cassette 'whitelist/delete' do
+        example.call
+      end
+    end
 
     it "deletes a whitelist" do
       @whitelist.delete(1, 1)
-      @whitelist.success.should be_true
+      @whitelist.success.should be_truthy
     end
   end
 

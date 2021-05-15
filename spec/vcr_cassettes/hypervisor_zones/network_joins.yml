@@ -1,40 +1,46 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/network_joins.json
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<URL>/settings/hypervisor_zones/1/network_joins.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      etag: 
-      - "\"3c7fe2057e6eaf72b2837f4188a4c1f3\""
-      x-powered-by: 
+      Etag:
+      - '"3c7fe2057e6eaf72b2837f4188a4c1f3"'
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.038722"
-      server: 
+      X-Runtime:
+      - '0.038722'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 14 Feb 2012 18:08:30 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "200"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '200'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "[{\"network_join\":{\"created_at\":\"2011-07-29T13:48:21Z\",\"network_id\":1,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-07-29T13:48:21Z\",\"hypervisor_id\":null,\"id\":12,\"interface\":\"eth2\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-10T07:45:31Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-10T07:45:31Z\",\"hypervisor_id\":null,\"id\":20,\"interface\":\"eth122\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-10T09:27:12Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-10T09:27:12Z\",\"hypervisor_id\":null,\"id\":21,\"interface\":\"eth1234\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-10T09:28:44Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-10T09:28:44Z\",\"hypervisor_id\":null,\"id\":22,\"interface\":\"eth1234\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-10T09:38:17Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-10T09:38:17Z\",\"hypervisor_id\":null,\"id\":23,\"interface\":\"interface_test\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-10T09:40:59Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-10T09:40:59Z\",\"hypervisor_id\":null,\"id\":24,\"interface\":\"json_test\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-11T15:11:36Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-11T15:11:36Z\",\"hypervisor_id\":null,\"id\":25,\"interface\":\"json_test3333\",\"target_join_id\":3}},{\"network_join\":{\"created_at\":\"2011-10-11T15:12:15Z\",\"network_id\":3,\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-10-11T15:12:15Z\",\"hypervisor_id\":null,\"id\":26,\"interface\":\"json_test3333234234sdfs\",\"target_join_id\":3}}]"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '[{"network_join":{"created_at":"2011-07-29T13:48:21Z","network_id":1,"target_join_type":"HypervisorGroup","updated_at":"2011-07-29T13:48:21Z","hypervisor_id":null,"id":12,"interface":"eth2","target_join_id":3}},{"network_join":{"created_at":"2011-10-10T07:45:31Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-10T07:45:31Z","hypervisor_id":null,"id":20,"interface":"eth122","target_join_id":3}},{"network_join":{"created_at":"2011-10-10T09:27:12Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-10T09:27:12Z","hypervisor_id":null,"id":21,"interface":"eth1234","target_join_id":3}},{"network_join":{"created_at":"2011-10-10T09:28:44Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-10T09:28:44Z","hypervisor_id":null,"id":22,"interface":"eth1234","target_join_id":3}},{"network_join":{"created_at":"2011-10-10T09:38:17Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-10T09:38:17Z","hypervisor_id":null,"id":23,"interface":"interface_test","target_join_id":3}},{"network_join":{"created_at":"2011-10-10T09:40:59Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-10T09:40:59Z","hypervisor_id":null,"id":24,"interface":"json_test","target_join_id":3}},{"network_join":{"created_at":"2011-10-11T15:11:36Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-11T15:11:36Z","hypervisor_id":null,"id":25,"interface":"json_test3333","target_join_id":3}},{"network_join":{"created_at":"2011-10-11T15:12:15Z","network_id":3,"target_join_type":"HypervisorGroup","updated_at":"2011-10-11T15:12:15Z","hypervisor_id":null,"id":26,"interface":"json_test3333234234sdfs","target_join_id":3}}]'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

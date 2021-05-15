@@ -1,233 +1,259 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Blabel%5D=one
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/1.json?network%5Blabel%5D=one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      content-type: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:17 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.011287"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.011287'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "{}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bnetwork_group_id%5D=1
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/1.json?network%5Bnetwork_group_id%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      content-type: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:17 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.009696"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.009696'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "{}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bidentifier%5D=lolzsdfds
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/1.json?network%5Bidentifier%5D=lolzsdfds
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      content-type: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:17 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.012071"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.012071'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "{}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bvlan%5D=1
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/1.json?network%5Bvlan%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      content-type: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:17 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.013193"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.013193'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "{}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bidentifier%5D=woah&network%5Blabel%5D=two&network%5Bvlan%5D=2
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/1.json?network%5Bidentifier%5D=woah&network%5Blabel%5D=two&network%5Bvlan%5D=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      content-type: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:17 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.010704"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.010704'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      status: 
-      - "200"
-      transfer-encoding: 
+      Status:
+      - '200'
+      Transfer-Encoding:
       - chunked
-    body: "{}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/404.json?
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: put
+    uri: http://<URL>/settings/networks/404.json?
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 404
       message: Not Found
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.006840"
-      server: 
+      X-Runtime:
+      - '0.006840'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:27:18 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "404"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '404'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"error":"Resource not found"}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

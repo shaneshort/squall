@@ -10,7 +10,11 @@ describe Squall::Template do
   end
 
   describe "#list" do
-    use_vcr_cassette 'template/list'
+        around do |example|
+      VCR.use_cassette 'template/list' do
+        example.call
+      end
+    end
 
     it "returns a list" do
       list = @template.list
@@ -23,11 +27,15 @@ describe Squall::Template do
   end
 
   describe "#make_public" do
-    use_vcr_cassette 'template/make_public'
+        around do |example|
+      VCR.use_cassette 'template/make_public' do
+        example.call
+      end
+    end
 
     it "makes the template public" do
       pub = @template.make_public(1)
-      @template.success.should be_true
+      @template.success.should be_truthy
       pub.keys.should include(*@keys)
     end
   end

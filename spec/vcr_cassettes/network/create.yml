@@ -1,196 +1,218 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=networktaken
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/settings/networks.json?network%5Blabel%5D=networktaken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - http://www.example.com/settings/networks/12
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.011776"
-      server: 
+      X-Runtime:
+      - '0.011776'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:54:47 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"network\":{\"label\":\"networktaken\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":12,\"vlan\":null,\"identifier\":\"58rrg0s87dhmut\"}}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Bidentifier%5D=newnetworkid&network%5Blabel%5D=newnetwork&network%5Bvlan%5D=1
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"network":{"label":"networktaken","created_at":"2011-04-19T15:54:47Z","network_group_id":null,"updated_at":"2011-04-19T15:54:47Z","id":12,"vlan":null,"identifier":"58rrg0s87dhmut"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/settings/networks.json?network%5Bidentifier%5D=newnetworkid&network%5Blabel%5D=newnetwork&network%5Bvlan%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      location: 
+      Location:
       - http://www.example.com/settings/networks/13
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:54:47 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.009338"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.009338'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "201"
-      transfer-encoding: 
+      Status:
+      - '201'
+      Transfer-Encoding:
       - chunked
-    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":13,\"vlan\":1,\"identifier\":\"newnetworkid\"}}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=newnetwork
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"network":{"label":"newnetwork","created_at":"2011-04-19T15:54:47Z","network_group_id":null,"updated_at":"2011-04-19T15:54:47Z","id":13,"vlan":1,"identifier":"newnetworkid"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/settings/networks.json?network%5Blabel%5D=newnetwork
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      location: 
+      Location:
       - http://www.example.com/settings/networks/14
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:54:47 GMT
-      server: 
+      Server:
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.009260"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
+      X-Runtime:
+      - '0.009260'
+      Set-Cookie:
+      - "<REDACTED>"
+      Cache-Control:
       - no-cache
-      status: 
-      - "201"
-      transfer-encoding: 
+      Status:
+      - '201'
+      Transfer-Encoding:
       - chunked
-    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":14,\"vlan\":null,\"identifier\":\"4appjk9ifgj9un\"}}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=newnetwork&network%5Bvlan%5D=2
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"network":{"label":"newnetwork","created_at":"2011-04-19T15:54:47Z","network_group_id":null,"updated_at":"2011-04-19T15:54:47Z","id":14,"vlan":null,"identifier":"4appjk9ifgj9un"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/settings/networks.json?network%5Blabel%5D=newnetwork&network%5Bvlan%5D=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - http://www.example.com/settings/networks/15
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.011726"
-      server: 
+      X-Runtime:
+      - '0.011726'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:55:03 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:55:03Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:55:03Z\",\"id\":15,\"vlan\":2,\"identifier\":\"0m1c8zrhpln93g\"}}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Bidentifier%5D=something&network%5Blabel%5D=newnetwork
-    body: 
-    headers: 
-      content-type: 
+    body:
+      encoding: UTF-8
+      string: '{"network":{"label":"newnetwork","created_at":"2011-04-19T15:55:03Z","network_group_id":null,"updated_at":"2011-04-19T15:55:03Z","id":15,"vlan":2,"identifier":"0m1c8zrhpln93g"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+- request:
+    method: post
+    uri: http://<URL>/settings/networks.json?network%5Bidentifier%5D=something&network%5Blabel%5D=newnetwork
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      location: 
+      Location:
       - http://www.example.com/settings/networks/16
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.009214"
-      server: 
+      X-Runtime:
+      - '0.009214'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 19 Apr 2011 15:55:03 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "201"
-      cache-control: 
+      Set-Cookie:
+      - "<REDACTED>"
+      Status:
+      - '201'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:55:03Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:55:03Z\",\"id\":16,\"vlan\":null,\"identifier\":\"something\"}}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"network":{"label":"newnetwork","created_at":"2011-04-19T15:55:03Z","network_group_id":null,"updated_at":"2011-04-19T15:55:03Z","id":16,"vlan":null,"identifier":"something"}}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0

@@ -13,7 +13,11 @@ describe Squall::VirtualMachine do
   end
 
   describe "#list" do
-    use_vcr_cassette "virtual_machine/list"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/list' do
+        example.call
+      end
+    end
 
     it "returns a virtual_machine list" do
       virtual_machines = @virtual_machine.list
@@ -28,7 +32,11 @@ describe Squall::VirtualMachine do
   end
 
   describe "#show" do
-    use_vcr_cassette "virtual_machine/show"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/show' do
+        example.call
+      end
+    end
 
     it "returns a virtual_machine" do
       virtual_machine = @virtual_machine.show(1)
@@ -38,174 +46,238 @@ describe Squall::VirtualMachine do
   end
 
   describe "#create" do
-    use_vcr_cassette "virtual_machine/create"
-
-    it "creates a virtual_machine" do
-      pending "broken in OnApp (triggering the Network Interfaces error): see README (and update when fixed)" do
-        virtual_machine = @virtual_machine.create(@valid)
-        @valid.each do |k,v|
-          virtual_machine[k].should == @valid[k.to_s]
-        end
+    around do |example|
+      VCR.use_cassette 'virtual_machine/create' do
+        example.call
       end
     end
+
+    # it "creates a virtual_machine" do
+    #   pending "broken in OnApp (triggering the Network Interfaces error): see README (and update when fixed)" do
+    #     virtual_machine = @virtual_machine.create(@valid)
+    #     @valid.each do |k,v|
+    #       virtual_machine[k].should == @valid[k.to_s]
+    #     end
+    #   end
+    # end
   end
 
   describe "#build" do
-    use_vcr_cassette "virtual_machine/build"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/build' do
+        example.call
+      end
+    end
 
     it "builds the VM" do
       build = @virtual_machine.build(72, template_id: 1)
 
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "virtual_machine/edit"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/edit' do
+        example.call
+      end
+    end
 
     it "updates the label" do
       virtual_machine = @virtual_machine.edit(1, label: 'testing')
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
       virtual_machine['label'].should == 'testing'
     end
   end
 
   describe "#change_owner" do
-    use_vcr_cassette "virtual_machine/change_owner"
-
-    pending "this should raise a 422 on OnApp's side, but it's currently raising a 500 which causes HTTParty to explode, see README (and update when fixed)" do
-      it "returns error on unknown user" do
-        expect { @virtual_machine.change_owner(1, 2) }.to raise_error(Squall::ServerError)
-        @virtual_machine.success.should be_false
+    around do |example|
+      VCR.use_cassette 'virtual_machine/change_owner' do
+        example.call
       end
     end
 
+    # pending "this should raise a 422 on OnApp's side, but it's currently raising a 500 which causes HTTParty to explode, see README (and update when fixed)" do
+    #   it "returns error on unknown user" do
+    #     expect { @virtual_machine.change_owner(1, 2) }.to raise_error(Squall::ServerError)
+    #     @virtual_machine.success.should be_falsey
+    #   end
+    # end
+
     it "changes the user" do
       result = @virtual_machine.change_owner(1, 2)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
 
       result['user_id'].should == 2
     end
   end
 
   describe "#change_password" do
-    use_vcr_cassette "virtual_machine/change_password"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/change_password' do
+        example.call
+      end
+    end
 
     it "changes the password" do
       result = @virtual_machine.change_password(1, 'passwordsareimportant')
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#set_ssh_keys" do
-    use_vcr_cassette "virtual_machine/set_ssh_keys"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/set_ssh_keys' do
+        example.call
+      end
+    end
 
     it "sets the SSH keys" do
       result = @virtual_machine.set_ssh_keys(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#migrate" do
-    use_vcr_cassette "virtual_machine/migrate"
-
-    it "changes the hypervisor" do
-      pending "Broken in OnApp" do
-        result = @virtual_machine.migrate(1, destination: 2)
-        @virtual_machine.success.should be_true
-        result['virtual_machine']['hypervisor_id'].should == 2
+    around do |example|
+      VCR.use_cassette 'virtual_machine/migrate' do
+        example.call
       end
     end
+
+    # it "changes the hypervisor" do
+    #   pending "Broken in OnApp" do
+    #     result = @virtual_machine.migrate(1, destination: 2)
+    #     @virtual_machine.success.should be_truthy
+    #     result['virtual_machine']['hypervisor_id'].should == 2
+    #   end
+    # end
   end
 
   describe "#set_vip" do
-    use_vcr_cassette "virtual_machine/set_vip"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/set_vip' do
+        example.call
+      end
+    end
 
     it "deletes a virtual_machine" do
       @virtual_machine.set_vip(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
 
-    it "sets the vip status to false if currently true" do
-      pending "No way to actually test this without being able to interact with server state" do
-        result = @virtual_machine.set_vip(1)
-        result['virtual_machine']['vip'].should be_false
-        flunk("currently untestable, so make sure it doesn't pass by accident")
-      end
-    end
+    # it "sets the vip status to false if currently true" do
+    #   pending "No way to actually test this without being able to interact with server state" do
+    #     result = @virtual_machine.set_vip(1)
+    #     result['virtual_machine']['vip'].should be_falsey
+    #     flunk("currently untestable, so make sure it doesn't pass by accident")
+    #   end
+    # end
   end
 
   describe "#delete" do
-    use_vcr_cassette "virtual_machine/delete"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/delete' do
+        example.call
+      end
+    end
 
     it "deletes a virtual_machine" do
       virtual_machine = @virtual_machine.delete(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#resize" do
-    use_vcr_cassette "virtual_machine/resize"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/resize' do
+        example.call
+      end
+    end
 
     it "resizes a virtual_machine" do
       virtual_machine = @virtual_machine.resize(1, memory: 1000)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
 
       virtual_machine['memory'].should == 1000
     end
   end
 
   describe "#suspend" do
-    use_vcr_cassette "virtual_machine/suspend"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/suspend' do
+        example.call
+      end
+    end
 
     it "suspends a virtual_machine" do
       virtual_machine = @virtual_machine.suspend(1)
-      virtual_machine['suspended'].should be_true
+      virtual_machine['suspended'].should be_truthy
     end
   end
 
   describe "#unlock" do
-    use_vcr_cassette "virtual_machine/unlock"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/unlock' do
+        example.call
+      end
+    end
 
     it "unlocks a virtual_machine" do
       virtual_machine = @virtual_machine.unlock(1)
-      virtual_machine['locked'].should be_false
+      virtual_machine['locked'].should be_falsey
     end
   end
 
   describe "#startup" do
-    use_vcr_cassette "virtual_machine/startup"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/startup' do
+        example.call
+      end
+    end
 
     it "startups a virtual_machine" do
       @virtual_machine.startup(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#shutdown" do
-    use_vcr_cassette "virtual_machine/shutdown"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/shutdown' do
+        example.call
+      end
+    end
 
     it "will shutdown a virtual_machine" do
       virtual_machine = @virtual_machine.shutdown(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#stop" do
-    use_vcr_cassette "virtual_machine/stop"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/stop' do
+        example.call
+      end
+    end
 
     it "will stop a virtual_machine" do
       virtual_machine = @virtual_machine.stop(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#reboot" do
-    use_vcr_cassette "virtual_machine/reboot"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/reboot' do
+        example.call
+      end
+    end
 
     it "will reboot a virtual_machine" do
       virtual_machine = @virtual_machine.reboot(1)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
 
     it "reboots in recovery" do
@@ -216,33 +288,45 @@ describe Squall::VirtualMachine do
   end
 
   describe "#segregate" do
-    use_vcr_cassette "virtual_machine/segregate"
+    around do |example|
+      VCR.use_cassette 'virtual_machine/segregate' do
+        example.call
+      end
+    end
 
     it "segregates the VMS with given ids" do
       result = @virtual_machine.segregate(1, 2)
-      @virtual_machine.success.should be_true
+      @virtual_machine.success.should be_truthy
     end
   end
 
   describe "#console" do
-    use_vcr_cassette "virtual_machine/console"
-
-    it "will reboot a virtual_machine" do
-      pending "broken on OnApp (returning 500)" do
-        virtual_machine = @virtual_machine.console(1)
-        @virtual_machine.success.should be_true
+    around do |example|
+      VCR.use_cassette 'virtual_machine/console' do
+        example.call
       end
     end
+
+    # it "will reboot a virtual_machine" do
+    #   pending "broken on OnApp (returning 500)" do
+    #     virtual_machine = @virtual_machine.console(1)
+    #     @virtual_machine.success.should be_truthy
+    #   end
+    # end
   end
 
   describe "#stats" do
-    use_vcr_cassette "virtual_machine/stats"
-
-    it "will stop a virtual_machine" do
-      pending "broken on OnApp (returning 500)" do
-        virtual_machine = @virtual_machine.stats(1)
-        @virtual_machine.success.should be_true
+    around do |example|
+      VCR.use_cassette 'virtual_machine/stats' do
+        example.call
       end
     end
+
+    # it "will stop a virtual_machine" do
+    #   pending "broken on OnApp (returning 500)" do
+    #     virtual_machine = @virtual_machine.stats(1)
+    #     @virtual_machine.success.should be_truthy
+    #   end
+    # end
   end
 end

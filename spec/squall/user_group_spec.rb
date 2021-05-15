@@ -8,7 +8,11 @@ describe Squall::UserGroup do
   end
 
   describe "#list" do
-    use_vcr_cassette "user_group/list"
+    around do |example|
+      VCR.use_cassette 'user_group/list' do
+        example.call
+      end
+    end
 
     it "returns a list of user groups" do
       user_groups = @user_group.list
@@ -22,29 +26,41 @@ describe Squall::UserGroup do
   end
 
   describe "#create" do
-    use_vcr_cassette "user_group/create"
+    around do |example|
+      VCR.use_cassette 'user_group/create' do
+        example.call
+      end
+    end
 
     it "creates a user group" do
       @user_group.create(@valid)
-      @user_group.success.should be_true
+      @user_group.success.should be_truthy
     end
   end
 
   describe "#edit" do
-    use_vcr_cassette "user_group/edit"
+    around do |example|
+      VCR.use_cassette 'user_group/edit' do
+        example.call
+      end
+    end
 
     it "edits a user group" do
       @user_group.edit(1, @valid)
-      @user_group.success.should be_true
+      @user_group.success.should be_truthy
     end
   end
 
   describe "#delete" do
-    use_vcr_cassette "user_group/delete"
+    around do |example|
+      VCR.use_cassette 'user_group/delete' do
+        example.call
+      end
+    end
 
     it "deletes a user group" do
       @user_group.delete(1)
-      @user_group.success.should be_true
+      @user_group.success.should be_truthy
     end
   end
 end

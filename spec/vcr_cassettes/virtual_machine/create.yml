@@ -1,38 +1,44 @@
---- 
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=10&virtual_machine%5Bprimary_disk_size%5D=10&virtual_machine%5Btemplate_id%5D=1&virtual_machine%5Blabel%5D=testmachine&virtual_machine%5Bhostname%5D=testmachine&virtual_machine%5Bmemory%5D=512&virtual_machine%5Bcpus%5D=1
-    body: 
-    headers: 
-      content-type: 
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<URL>/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=10&virtual_machine%5Bprimary_disk_size%5D=10&virtual_machine%5Btemplate_id%5D=1&virtual_machine%5Blabel%5D=testmachine&virtual_machine%5Bhostname%5D=testmachine&virtual_machine%5Bmemory%5D=512&virtual_machine%5Bcpus%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      authorization: 
+      Authorization:
       - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
+  response:
+    status:
       code: 422
       message: Unprocessable Entity
-    headers: 
-      x-ua-compatible: 
+    headers:
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      x-powered-by: 
+      X-Powered-By:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
+      Content-Type:
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.285970"
-      server: 
+      X-Runtime:
+      - '0.285970'
+      Server:
       - Apache/2.2.3 (CentOS)
-      date: 
+      Date:
       - Tue, 07 Feb 2012 16:55:28 GMT
-      set-cookie: 
+      Set-Cookie:
       - _session_id=23378ba2608e14050dacc611f4c12762; path=/; HttpOnly
-      status: 
-      - "422"
-      cache-control: 
+      Status:
+      - '422'
+      Cache-Control:
       - no-cache
-      transfer-encoding: 
+      Transfer-Encoding:
       - chunked
-    body: "{\"errors\":[\"Network interfaces is invalid\"]}"
-    http_version: "1.1"
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Network interfaces is invalid"]}'
+    http_version: '1.1'
+  recorded_at: Fri, 21 Feb 2020 07:20:38 GMT
+recorded_with: VCR 6.0.0
