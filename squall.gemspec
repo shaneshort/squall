@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "squall"
   s.version     = Squall::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Justin Mazzi"]
-  s.email       = ["jmazzi@site5.com"]
+  s.authors     = ["Justin Mazzi", "Shane Short"]
+  s.email       = ["jmazzi@site5.com", "shanes@webinabox.net.au"]
   s.homepage    = ""
   s.summary     = %q{A Ruby library for working with the OnApp REST API}
   s.description = %q{A Ruby library for working with the OnApp REST API}
@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "squall"
 
-  s.add_runtime_dependency 'faraday', '~> 0.9.0'
-  s.add_runtime_dependency 'faraday_middleware', '~> 0.9.0'
+  s.add_runtime_dependency 'faraday', '~> 1.3.0'
+  s.add_runtime_dependency 'faraday_middleware', '~> 1.0.0'
   s.add_runtime_dependency 'json', '~> 2.1'
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.3') if RUBY_PLATFORM == 'java'
 
